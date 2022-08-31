@@ -29,7 +29,6 @@ public:
 
     // /virtual functions to make the Player class abstract
     virtual void setPlayer(std::string, int) = 0;
-    virtual void win(int) = 0;
     virtual void draw(Deck &) = 0;
     virtual void updateHandCounter() = 0;
 };

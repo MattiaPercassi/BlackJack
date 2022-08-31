@@ -4,6 +4,6 @@
 
 std::ostream &operator<<(std::ostream &os, Card& card)
 {
-    os << card.value << " of " << card.suit << std::endl;
+    os << card.value << " of " << card.suit;
     return os;
 };

@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Card.h"
 #include "Deck.h"
+#include "RealPlayer.h"
 
 class Dealer : public Player
 {
@@ -13,7 +14,7 @@ public:
     virtual ~Dealer(){};
     void setPlayer(std::string, int);
     void shuffle(Deck &);
-    void win(int);
+    void win(RealPlayer &);
     void draw(Deck &);
     virtual void updateHandCounter();
 };

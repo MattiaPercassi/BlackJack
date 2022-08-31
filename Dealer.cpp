@@ -9,9 +9,10 @@ void Dealer::shuffle(Deck &deck)
 {
     deck.shuffle();
 };
-void Dealer::win(int win)
+void Dealer::win(RealPlayer &player)
 {
-    winning += win;
+    winning += player.checkBet();
+    player.resetBet();
 };
 void Dealer::draw(Deck &deck)
 {

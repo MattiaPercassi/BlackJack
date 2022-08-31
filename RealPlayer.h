@@ -5,20 +5,30 @@
 #include "Player.h"
 #include "Card.h"
 #include "Deck.h"
+#include <iostream>
 
 class RealPlayer : public Player
 {
+    friend std::ostream &operator<<(std::ostream &, RealPlayer &);
+
 protected:
     int currentBet;
+    // Active player in current hand
+    bool active;
 
 public:
     RealPlayer() : Player(), currentBet{} {};
     virtual ~RealPlayer(){};
 
     virtual void setPlayer(std::string, int);
-    virtual void win(int);
+    virtual void win();
     virtual void draw(Deck &);
+    virtual void updateHandCounter();
     void bet(int);
+    bool isActive();
+    int checkBalance();
+    int checkBet();
+    bool isEliminated();
     void resetBet();
 };
 

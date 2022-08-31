@@ -56,7 +56,7 @@ std::ostream &operator<<(std::ostream &os, Deck &rhs)
     }
     else
     {
-        os << "Front card: " << rhs.cards.front() << "Total cards: " << rhs.cards.size() << std::endl;
+        os << "Front card: " << rhs.cards.front() << "\nTotal cards: " << rhs.cards.size() << std::endl;
     }
     return os;
 };

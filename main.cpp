@@ -11,16 +11,27 @@ int main()
 {
     Dealer dealer;
     dealer.setPlayer("Dealer", 0);
+    
+    RealPlayer player;
+    player.setPlayer("Mattia", 100);
+    std::cout << player;
+    
     int deckNum{1};
     Deck deck(deckNum);
-    std::cout << deck << '\n';
+    std::cout << deck;
+    player.draw(deck);
+    std::cout << deck;
+    player.draw(deck);
+    std::cout << player;
+    
+    // std::cout << deck << '\n';
 
-    while (deck.size() > 0)
-    {
-        dealer.draw(deck);
-        std::cout << deck;
-        std::cout << '\n';
-    };
+    // while (deck.size() > 0)
+    // {
+    //     dealer.draw(deck);
+    //     std::cout << deck;
+    //     std::cout << '\n';
+    // };
 
     /*
     std::vector<RealPlayer> players;
