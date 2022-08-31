@@ -22,10 +22,10 @@ int main()
     Deck deck(deckNum);
     std::cout << deck;
     std::cout << std::endl;
-    player.draw(deck);
+    dealer.giveCard(deck,player);
     std::cout << deck;
     std::cout << std::endl;
-    player.draw(deck);
+    dealer.giveCard(deck,player);
     std::cout << player;
     std::cout << std::endl;
     player.bet(20);

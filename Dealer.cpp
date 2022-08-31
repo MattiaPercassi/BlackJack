@@ -23,6 +23,10 @@ void Dealer::draw(Deck &deck)
 {
     hand.push_back(deck.draw());
 };
+void Dealer::giveCard(Deck &deck, RealPlayer &player)
+{
+    player.draw(deck);
+};
 void Dealer::updateHandCounter()
 {
     handsPlayed++;

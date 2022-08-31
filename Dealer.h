@@ -20,6 +20,7 @@ public:
     void win(RealPlayer &);
     void lose(RealPlayer &);
     void draw(Deck &);
+    void giveCard(Deck &, RealPlayer &);
     virtual void updateHandCounter();
 };
 
