@@ -11,19 +11,34 @@ int main()
 {
     Dealer dealer;
     dealer.setPlayer("Dealer", 0);
-    
+
     RealPlayer player;
     player.setPlayer("Mattia", 100);
     std::cout << player;
-    
+    std::cout << std::endl;
     int deckNum{1};
     Deck deck(deckNum);
     std::cout << deck;
+    std::cout << std::endl;
     player.draw(deck);
     std::cout << deck;
+    std::cout << std::endl;
     player.draw(deck);
     std::cout << player;
-    
+    std::cout << std::endl;
+    player.bet(20);
+    std::cout << player;
+    std::cout << std::endl;
+    player.win();
+    std::cout << player;
+    std::cout << std::endl;
+    player.resetBet();
+    std::cout << player;
+    std::cout << std::endl;
+    player.bet(300);
+    std::cout << player;
+    std::cout << std::endl;
+
     // std::cout << deck << '\n';
 
     // while (deck.size() > 0)

@@ -3,17 +3,20 @@
 #include "Card.h"
 #include "Deck.h"
 #include <iostream>
+#include <iomanip>
 
 void RealPlayer::setPlayer(std::string nm, int initialBalance)
 {
     name = nm;
     balance = initialBalance;
+    eliminated = false;
+    active = true;
 };
 void RealPlayer::win()
 {
     // TODO - implement properly
     winning += currentBet;
-    balance += currentBet;
+    balance += currentBet * 2;
 };
 void RealPlayer::draw(Deck &deck)
 {
@@ -59,8 +62,9 @@ void RealPlayer::resetBet()
 
 std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
 {
-    os << rhs.name << '\n'
-       << "Current hand: ";
+    os << std::boolalpha;
+    os << rhs.name << "\nWinning: " << rhs.winning << "\nLosses: " << rhs.losses;
+    os << "\nCurrent hand: ";
     if (rhs.hand.size() == 0)
         os << "No cards";
     else
@@ -70,8 +74,7 @@ std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
             os << card << " | ";
         };
     }
-    os << '\n';
-    os << "Current balance: " << rhs.balance << '\n'
-       << "Current bet: " << rhs.currentBet << std::endl;
+    os << "\nCurrent balance: " << rhs.balance
+       << "\nCurrent bet: " << rhs.currentBet << "\nHands played: " << rhs.handsPlayed << "\nEliminated: " << rhs.eliminated << "\nActive: " << rhs.active << std::endl;
     return os;
 };
