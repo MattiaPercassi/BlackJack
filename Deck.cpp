@@ -46,7 +46,14 @@ void Deck::shuffle()
 int Deck::size()
 {
     return deckSize;
-}
+};
+void Deck::addCards(std::vector<Card> retCards)
+{
+    for (auto &card : retCards)
+    {
+        cards.push_back(card);
+    }
+};
 
 std::ostream &operator<<(std::ostream &os, Deck &rhs)
 {

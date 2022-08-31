@@ -4,6 +4,7 @@
 #include "Deck.h"
 #include <iostream>
 #include <iomanip>
+#include <vector>
 
 void RealPlayer::setPlayer(std::string nm, int initialBalance)
 {
@@ -65,7 +66,12 @@ void RealPlayer::resetBet()
 {
     currentBet = 0;
 };
-
+std::vector<Card> RealPlayer::returnCards()
+{
+    std::vector<Card> retCards = hand;
+    hand.clear();
+    return retCards;
+};
 std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
 {
     os << std::boolalpha;

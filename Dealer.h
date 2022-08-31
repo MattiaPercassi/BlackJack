@@ -21,6 +21,8 @@ public:
     void lose(RealPlayer &);
     void draw(Deck &);
     void giveCard(Deck &, RealPlayer &);
+    void collectCards(Deck &, RealPlayer &);
+    void returnCards(Deck &);
     virtual void updateHandCounter();
 };
 

@@ -31,6 +31,7 @@ public:
     int checkBet();
     bool isEliminated();
     void resetBet();
+    std::vector<Card> returnCards();
 };
 
 #endif

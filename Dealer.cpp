@@ -27,6 +27,15 @@ void Dealer::giveCard(Deck &deck, RealPlayer &player)
 {
     player.draw(deck);
 };
+void Dealer::collectCards(Deck &deck, RealPlayer &player)
+{
+    deck.addCards(player.returnCards());
+};
+void Dealer::returnCards(Deck &deck)
+{
+    deck.addCards(hand);
+    hand.clear();
+};
 void Dealer::updateHandCounter()
 {
     handsPlayed++;

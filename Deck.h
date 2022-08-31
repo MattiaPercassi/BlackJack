@@ -20,7 +20,7 @@ protected:
 public:
     Deck(int);
     Card draw();
-    void returnCard();
+    void addCards(std::vector<Card>);
     void shuffle();
     int size();
 };
