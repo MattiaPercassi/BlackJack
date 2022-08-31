@@ -14,6 +14,11 @@ void Dealer::win(RealPlayer &player)
     winning += player.checkBet();
     player.lose();
 };
+void Dealer::lose(RealPlayer &player)
+{
+    losses += player.checkBet();
+    player.win();
+};
 void Dealer::draw(Deck &deck)
 {
     hand.push_back(deck.draw());

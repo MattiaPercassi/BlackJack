@@ -31,7 +31,7 @@ int main()
     player.bet(20);
     std::cout << player;
     std::cout << std::endl;
-    player.win();
+    dealer.lose(player);
     std::cout << player;
     std::cout << std::endl;
     player.bet(300);
