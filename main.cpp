@@ -11,6 +11,8 @@ int main()
 {
     Dealer dealer;
     dealer.setPlayer("Dealer", 0);
+    std::cout << dealer;
+    std::cout << std::endl;
 
     RealPlayer player;
     player.setPlayer("Mattia", 100);
@@ -32,13 +34,13 @@ int main()
     player.win();
     std::cout << player;
     std::cout << std::endl;
-    player.resetBet();
-    std::cout << player;
-    std::cout << std::endl;
     player.bet(300);
     std::cout << player;
     std::cout << std::endl;
-
+    player.bet(20);
+    dealer.win(player);
+    std::cout << dealer << '\n' << player;
+    std::cout << std::endl;
     // std::cout << deck << '\n';
 
     // while (deck.size() > 0)

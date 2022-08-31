@@ -17,6 +17,12 @@ void RealPlayer::win()
     // TODO - implement properly
     winning += currentBet;
     balance += currentBet * 2;
+    resetBet();
+};
+void RealPlayer::lose()
+{
+    losses += currentBet;
+    resetBet();
 };
 void RealPlayer::draw(Deck &deck)
 {

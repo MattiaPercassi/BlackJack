@@ -21,7 +21,8 @@ public:
     virtual ~RealPlayer(){};
 
     virtual void setPlayer(std::string, int);
-    virtual void win();
+    void win();
+    void lose();
     virtual void draw(Deck &);
     virtual void updateHandCounter();
     void bet(int);

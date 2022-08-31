@@ -6,9 +6,12 @@
 #include "Card.h"
 #include "Deck.h"
 #include "RealPlayer.h"
+#include <iostream>
 
 class Dealer : public Player
 {
+    friend std::ostream &operator<<(std::ostream &, Dealer &);
+
 public:
     Dealer() : Player(){};
     virtual ~Dealer(){};
