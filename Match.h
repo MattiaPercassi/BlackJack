@@ -11,18 +11,22 @@
 
 class Match
 {
+    friend std::ostream &operator<<(std::ostream &, Match &);
+
 protected:
     Dealer dealer;
     std::vector<RealPlayer> players;
     Deck deck;
     int handCounter;
     bool finished;
+    int minimumBet;
+    int maximumBet;
+    int maximumHands;
 
 public:
-    Match(Dealer, std::vector<RealPlayer>, Deck);
+    Match(Dealer, std::vector<RealPlayer>, Deck, int, int, int);
     void playhand();
-    void showResults();
-    bool isFinished();
+    bool checkHandsPlayed();
     // void save(); //commented for now
 };
 
