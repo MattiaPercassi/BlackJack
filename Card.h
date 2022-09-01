@@ -8,6 +8,8 @@
 class Card
 {
     friend std::ostream &operator<<(std::ostream &, Card &);
+    // for accumulate overloaded + operator with int on lhs is required
+    friend int operator+(int &, Card &);
 
 protected:
     int value;
