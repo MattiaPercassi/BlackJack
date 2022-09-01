@@ -21,13 +21,10 @@ void Match::playhand()
     // 3. dealer distributes cards
     for (auto &pl : players)
     {
-        dealer.giveCard(pl);
-        dealer.giveCard(pl);
+        dealer.giveCard(deck, pl);
+        dealer.giveCard(deck, pl);
     };
-    for (auto &pl : players)
-    {
-        while
-    }
+
     // TODO - implement code
     /*
     4. player calls cards until limit or out
