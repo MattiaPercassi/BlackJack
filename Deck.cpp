@@ -20,7 +20,6 @@ Deck::Deck(int deckNum) : cards{}
         }
     }
     deckSize = cards.size();
-    shuffle();
 };
 
 Card Deck::draw()
