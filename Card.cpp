@@ -2,7 +2,12 @@
 #include <iostream>
 #include <string>
 
-std::ostream &operator<<(std::ostream &os, Card& card)
+int Card::checkValue()
+{
+    return value;
+};
+
+std::ostream &operator<<(std::ostream &os, Card &card)
 {
     os << card.value << " of " << card.suit;
     return os;

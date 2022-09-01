@@ -7,13 +7,15 @@
 
 class Card
 {
-friend std::ostream &operator<<(std::ostream&, Card&);
+    friend std::ostream &operator<<(std::ostream &, Card &);
+
 protected:
     int value;
     std::string suit;
 
 public:
     Card(int val, std::string su) : value{val}, suit{su} {};
+    int checkValue();
 };
 
 #endif
