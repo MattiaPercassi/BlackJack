@@ -11,11 +11,25 @@
 Match::Match(Dealer d, std::vector<RealPlayer> p, Deck de, int minbet, int maxbet, int maxhands) : dealer{d}, players{p}, deck{de}, handCounter{0}, finished{false}, minimumBet{minbet}, maximumBet{maxbet}, maximumHands{maxhands} {};
 void Match::playhand()
 {
+    // 1. dealer shuffles
+    dealer.shuffle(deck);
+    // 2. players bet
+    for (auto &pl : players)
+    {
+        pl.bet(minimumBet);
+    };
+    // 3. dealer distributes cards
+    for (auto &pl : players)
+    {
+        dealer.giveCard(pl);
+        dealer.giveCard(pl);
+    };
+    for (auto &pl : players)
+    {
+        while
+    }
     // TODO - implement code
     /*
-    1. dealer shuffles
-    2. players bet
-    3. dealer distributes cards
     4. player calls cards until limit or out
     .. [loop all players]
     5. dealer draws cards until limit or out
