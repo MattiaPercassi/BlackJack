@@ -31,6 +31,7 @@ public:
     virtual void setPlayer(std::string, int) = 0;
     virtual void draw(Deck &) = 0;
     virtual void updateHandCounter() = 0;
+    virtual int checkScore() = 0;
 };
 
 #endif

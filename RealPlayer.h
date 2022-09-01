@@ -25,6 +25,7 @@ public:
     void lose();
     virtual void draw(Deck &);
     virtual void updateHandCounter();
+    virtual int checkScore();
     void bet(int);
     bool isActive();
     int checkBalance();
