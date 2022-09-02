@@ -24,7 +24,6 @@ public:
     void collectCards(Deck &, RealPlayer &);
     void returnCards(Deck &);
     virtual void updateHandCounter();
-    virtual int checkScore();
 };
 
 #endif
