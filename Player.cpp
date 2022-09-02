@@ -12,7 +12,7 @@ int Player::checkScore()
     int tempScore{0};
     // No Ace score, sum all cards without Aces (lambda function dependent on the value assigned to ace)
     // TODO - checkValue should return the value between 1 and 10, for the actual card symbol we need an extra member to be shown
-    int acesCount = std::count(hand.begin(), hand.end(), [](Card &c)
+    int acesCount = std::count_if(hand.begin(), hand.end(), [](Card &c)
                                { return (c.checkValue() == 1); });
     for (auto &card : hand)
     {
