@@ -52,7 +52,7 @@ std::ostream &operator<<(std::ostream &os, Dealer &rhs)
     {
         for (auto &card : rhs.hand)
         {
-            os << card << " | ";
+            os << card ;
         };
     }
     os << "\n-------------------\n";
