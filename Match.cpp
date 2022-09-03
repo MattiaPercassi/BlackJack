@@ -13,25 +13,38 @@ void Match::playhand()
 {
     // 1. dealer shuffles
     dealer.shuffle(deck);
+    
     // 2. players bet
     for (auto &pl : players)
     {
         pl.bet(minimumBet);
     };
-    // 3. dealer distributes cards
+
+    // 3. dealer distributes cards and draws own cards
     for (auto &pl : players)
     {
         dealer.giveCard(deck, pl);
         dealer.giveCard(deck, pl);
     };
+    dealer.draw(deck);
+    dealer.draw(deck);
 
+    // 4. player calls cards until limit or out
+    for (auto &pl : players)
+    {
+        std::cout << pl.checkScore() << std::endl;
+    };
+
+    // 7. dealer collect cards and return own cards to the deck
+    for (auto &pl : players)
+    {
+        dealer.collectCards(deck, pl);
+    };
+    dealer.returnCards(deck);
     // TODO - implement code
     /*
-    4. player calls cards until limit or out
-    .. [loop all players]
     5. dealer draws cards until limit or out
     6. dealer wins and loses
-    7. cards are returned to the deck
     8. update the played hands counter
     9. eliminate players with too little balance
 
