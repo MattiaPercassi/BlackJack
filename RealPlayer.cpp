@@ -75,19 +75,27 @@ std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
 {
     os << std::boolalpha;
     os << "-------------------\n";
-    os << rhs.name << "\nWinning: " << rhs.winning << "\nLosses: " << rhs.losses;
-    os << "\nCurrent hand: ";
+    os << rhs.name << '\n'
+       << std::setw(20) << "Winning: " << std::left << rhs.winning << '\n'
+       << std::setw(20) << "Losses: " << std::left << rhs.losses << '\n'
+       << std::setw(20) << "Current hand: ";
     if (rhs.hand.size() == 0)
-        os << "No cards";
+        os << std::left << "No cards";
     else
     {
         for (auto &card : rhs.hand)
         {
-            os << card << " | ";
+            os << card;
         };
     }
-    os << "\nHand value: " << rhs.checkScore() << "\n\nCurrent balance: " << rhs.balance
-       << "\nCurrent bet: " << rhs.currentBet << "\nHands played: " << rhs.handsPlayed << "\nEliminated: " << rhs.eliminated << "\nActive: " << rhs.active << std::endl;
+    os << '\n'
+       << std::setw(20) << "Hand value: " << std::left << rhs.checkScore() << '\n'
+       << '\n'
+       << std::setw(20) << "Current balance: " << std::left << rhs.balance << '\n'
+       << std::setw(20) << "Current bet: " << std::left << rhs.currentBet << '\n'
+       << std::setw(20) << "Hands played: " << std::left << rhs.handsPlayed << '\n'
+       << std::setw(20) << "Eliminated: " << std::left << rhs.eliminated << '\n'
+       << std::setw(20) << "Active: " << std::left << rhs.active << std::endl;
     os << "-------------------\n";
     return os;
 };

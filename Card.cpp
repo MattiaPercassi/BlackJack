@@ -1,6 +1,7 @@
 #include "Card.h"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 int Card::checkValue()
 {
@@ -9,7 +10,7 @@ int Card::checkValue()
 
 std::ostream &operator<<(std::ostream &os, Card &card)
 {
-    os << card.rank << " of " << card.suit;
+    os << card.rank << " of " << std::setw(10) << std::left << card.suit;
     return os;
 };
 
