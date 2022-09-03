@@ -15,7 +15,7 @@ Deck::Deck(int deckNum) : cards{}
         {
             for (size_t j{0}; j < ranks.size(); ++j)
             {
-                cards.push_back(Card(values.at(j), ranks.at(j),su));
+                cards.push_back(Card(values.at(j), ranks.at(j), su));
             }
         }
     }
@@ -51,7 +51,8 @@ void Deck::addCards(std::vector<Card> retCards)
     for (auto &card : retCards)
     {
         cards.push_back(card);
-    }
+    };
+    deckSize += retCards.size();
 };
 
 std::ostream &operator<<(std::ostream &os, Deck &rhs)
