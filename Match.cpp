@@ -37,6 +37,22 @@ void Match::playhand()
         std::cout << pl << std::endl;
     };
 
+    // 5. dealer draws cards until limit or out
+    while (dealer.checkScore() < 18)
+    {
+        dealer.draw(deck);
+        std::cout << dealer << std::endl;
+    };
+
+    // 6. dealer wins and loses
+    for (auto &pl : players)
+    {
+        if (dealer.checkScore() > 21 && pl.checkScore() <= 21)
+            dealer.lose(pl);
+        else if (pl.checkScore()>21) dealer.win(pl);
+        else if (dealer.checkScore()>=pl.checkScore()) dealer.win(pl);
+    };
+
     // 7. dealer collect cards and return own cards to the deck
     for (auto &pl : players)
     {
@@ -45,15 +61,13 @@ void Match::playhand()
     dealer.returnCards(deck);
     // TODO - implement code
     /*
-    5. dealer draws cards until limit or out
-    6. dealer wins and loses
-    8. update the played hands counter
     9. eliminate players with too little balance
 
     10. check the maximum hands, if reached we terminate here --> OUTSIDE THIS FUNCTION
     11. check if all players are eliminated if so we terminate --> OUTSIDE THIS FUNCTION
     end. show results of the match
     */
+    // 8. update the played hands counter
     ++handCounter;
 };
 

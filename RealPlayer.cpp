@@ -15,7 +15,6 @@ void RealPlayer::setPlayer(std::string nm, int initialBalance)
 };
 void RealPlayer::win()
 {
-    // TODO - implement properly
     winning += currentBet;
     balance += currentBet * 2;
     resetBet();
