@@ -13,10 +13,11 @@ class Card
 
 protected:
     int value;
+    std::string rank;
     std::string suit;
 
 public:
-    Card(int val, std::string su) : value{val}, suit{su} {};
+    Card(int val, std::string rk, std::string su) : value{val}, rank(rk), suit{su} {};
     int checkValue();
 };
 
