@@ -13,7 +13,7 @@ void Match::playhand()
 {
     // 1. dealer shuffles
     dealer.shuffle(deck);
-    
+
     // 2. players bet
     for (auto &pl : players)
     {
@@ -32,7 +32,9 @@ void Match::playhand()
     // 4. player calls cards until limit or out
     for (auto &pl : players)
     {
-        std::cout << pl.checkScore() << std::endl;
+        while (pl.checkScore() < 18)
+            dealer.giveCard(deck, pl);
+        std::cout << pl << std::endl;
     };
 
     // 7. dealer collect cards and return own cards to the deck

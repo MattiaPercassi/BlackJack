@@ -86,7 +86,7 @@ std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
             os << card << " | ";
         };
     }
-    os << "\nCurrent balance: " << rhs.balance
+    os << "\nHand value: " << rhs.checkScore() << "\n\nCurrent balance: " << rhs.balance
        << "\nCurrent bet: " << rhs.currentBet << "\nHands played: " << rhs.handsPlayed << "\nEliminated: " << rhs.eliminated << "\nActive: " << rhs.active << std::endl;
     return os;
 };
