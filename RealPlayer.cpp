@@ -74,6 +74,7 @@ std::vector<Card> RealPlayer::returnCards()
 std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
 {
     os << std::boolalpha;
+    os << "-------------------\n";
     os << rhs.name << "\nWinning: " << rhs.winning << "\nLosses: " << rhs.losses;
     os << "\nCurrent hand: ";
     if (rhs.hand.size() == 0)
@@ -87,5 +88,6 @@ std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
     }
     os << "\nHand value: " << rhs.checkScore() << "\n\nCurrent balance: " << rhs.balance
        << "\nCurrent bet: " << rhs.currentBet << "\nHands played: " << rhs.handsPlayed << "\nEliminated: " << rhs.eliminated << "\nActive: " << rhs.active << std::endl;
+    os << "-------------------\n";
     return os;
 };

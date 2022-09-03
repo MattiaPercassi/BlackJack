@@ -31,7 +31,7 @@ int main()
 
     Deck deck{1};
 
-    Match match1{dealer, players, deck, 10, 100, 10};
+    Match match1{dealer, players, deck, 10, 100, 5};
 
     while (match1.checkHandsPlayed())
     {
@@ -40,33 +40,33 @@ int main()
     }
     std::cout << match1 << std::endl;
 
-        // std::cout << deck << '\n';
+    // std::cout << deck << '\n';
 
-        // while (deck.size() > 0)
-        // {
-        //     dealer.draw(deck);
-        //     std::cout << deck;
-        //     std::cout << '\n';
-        // };
+    // while (deck.size() > 0)
+    // {
+    //     dealer.draw(deck);
+    //     std::cout << deck;
+    //     std::cout << '\n';
+    // };
 
-        /*
-        std::vector<RealPlayer> players;
-        size_t playerNum{5};
-        int initialBalance{100};
-        for (size_t i{0}; i < playerNum; ++i)
-        {
-            RealPlayer player;
-            std::string name;
-            std::cout << "Nome giocatore: ";
-            std::cin >> name;
-            player.setPlayer(name, initialBalance);
-            players.push_back(player);
-        };
+    /*
+    std::vector<RealPlayer> players;
+    size_t playerNum{5};
+    int initialBalance{100};
+    for (size_t i{0}; i < playerNum; ++i)
+    {
+        RealPlayer player;
+        std::string name;
+        std::cout << "Nome giocatore: ";
+        std::cin >> name;
+        player.setPlayer(name, initialBalance);
+        players.push_back(player);
+    };
 
 
-        Match match1(dealer, players, deck);
+    Match match1(dealer, players, deck);
 
-        // code for playing the game
-        */
-        return 0;
+    // code for playing the game
+    */
+    return 0;
 };

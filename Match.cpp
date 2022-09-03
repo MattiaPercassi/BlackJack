@@ -41,16 +41,18 @@ void Match::playhand()
     while (dealer.checkScore() < 18)
     {
         dealer.draw(deck);
-        std::cout << dealer << std::endl;
     };
+    std::cout << dealer << std::endl;
 
     // 6. dealer wins and loses
     for (auto &pl : players)
     {
         if (dealer.checkScore() > 21 && pl.checkScore() <= 21)
             dealer.lose(pl);
-        else if (pl.checkScore()>21) dealer.win(pl);
-        else if (dealer.checkScore()>=pl.checkScore()) dealer.win(pl);
+        else if (pl.checkScore() > 21)
+            dealer.win(pl);
+        else if (dealer.checkScore() >= pl.checkScore())
+            dealer.win(pl);
     };
 
     // 7. dealer collect cards and return own cards to the deck
@@ -82,6 +84,7 @@ std::ostream &operator<<(std::ostream &os, Match &rhs)
        << "Hands Played: " << rhs.handCounter << "/" << rhs.maximumHands << '\n'
        << "Active players: " << std::count_if(rhs.players.begin(), rhs.players.end(), [](RealPlayer &p)
                                               { return !p.isEliminated(); })
-       << "/" << rhs.players.size() << std::endl;
+       << "/" << rhs.players.size() << '\n'
+       << std::endl;
     return os;
 };
