@@ -13,9 +13,9 @@ Deck::Deck(int deckNum) : cards{}
     {
         for (auto &su : suits)
         {
-            for (auto &val : values)
+            for (size_t j{0}; j < ranks.size(); ++j)
             {
-                cards.push_back(Card(val, su));
+                cards.push_back(Card(values.at(j), ranks.at(j),su));
             }
         }
     }

@@ -9,7 +9,7 @@ int Card::checkValue()
 
 std::ostream &operator<<(std::ostream &os, Card &card)
 {
-    os << card.value << " of " << card.suit;
+    os << card.rank << " of " << card.suit;
     return os;
 };
 

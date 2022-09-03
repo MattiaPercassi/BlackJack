@@ -14,7 +14,8 @@ class Deck
 protected:
     std::vector<Card> cards;
     std::array<std::string, 4> suits{"Hearts", "Spades", "Flowers", "Squares"};
-    std::array<int, 13> values{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+    std::array<std::string, 13> ranks{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+    std::array<int, 13> values{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
     int deckSize;
 
 public:
