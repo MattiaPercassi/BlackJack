@@ -74,8 +74,8 @@ std::vector<Card> RealPlayer::returnCards()
 std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
 {
     os << std::boolalpha;
-    os << "-------------------\n";
-    os << rhs.name << '\n'
+    os << "-------------------\n"
+       << rhs.name << '\n'
        << std::setw(20) << "Winning: " << std::left << rhs.winning << '\n'
        << std::setw(20) << "Losses: " << std::left << rhs.losses << '\n'
        << std::setw(20) << "Current hand: ";

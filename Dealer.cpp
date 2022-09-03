@@ -1,4 +1,5 @@
 #include "Dealer.h"
+#include <iomanip>
 
 void Dealer::setPlayer(std::string nm, int bal)
 {
@@ -43,16 +44,17 @@ void Dealer::updateHandCounter()
 std::ostream &operator<<(std::ostream &os, Dealer &rhs)
 {
     os << std::boolalpha;
-    os << "-------------------\n";
-    os << rhs.name << "\nWinning: " << rhs.winning << "\nLosses: " << rhs.losses;
-    os << "\nCurrent hand: ";
+    os << "-------------------\n" << rhs.name << '\n'
+       << std::setw(20) << std::left << "Winning: " << rhs.winning << '\n'
+       << std::setw(20) << std::left << "Losses: " << rhs.losses << '\n'
+       << std::setw(20) << std::left << "Current hand: ";
     if (rhs.hand.size() == 0)
         os << "No cards";
     else
     {
         for (auto &card : rhs.hand)
         {
-            os << card ;
+            os << card;
         };
     }
     os << "\n-------------------\n";
