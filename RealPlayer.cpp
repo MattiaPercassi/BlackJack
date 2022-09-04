@@ -30,15 +30,10 @@ void RealPlayer::updateHandCounter()
 {
     ++handsPlayed;
 };
-bool RealPlayer::bet(int b)
+void RealPlayer::bet(int b)
 {
-    if (b <= balance)
-    {
-        balance -= b;
-        currentBet += b;
-        return true;
-    }
-    return false;
+    balance -= b;
+    currentBet += b;
 };
 int RealPlayer::checkBalance()
 {
