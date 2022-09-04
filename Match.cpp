@@ -8,20 +8,20 @@
 #include "RealPlayer.h"
 #include "Match.h"
 
-Match::Match(Dealer d, std::vector<RealPlayer> p, Deck de, int minbet, int maxbet, int maxhands) : dealer{d}, players{p}, deck{de}, handCounter{0}, finished{false}, minimumBet{minbet}, maximumBet{maxbet}, maximumHands{maxhands} {};
+Match::Match(Dealer d, std::vector<RealPlayer> p, Deck de, int minbet, int maxbet, int maxhands) : dealer{d}, totalPlayers{static_cast<int>(p.size())}, activePlayers{p}, inactivePlayers{}, eliminatedPlayers{}, deck{de}, handCounter{0}, finished{false}, minimumBet{minbet}, maximumBet{maxbet}, maximumHands{maxhands} {};
 void Match::playhand()
 {
     // 1. dealer shuffles
     dealer.shuffle(deck);
 
     // 2. players bet
-    for (auto &pl : players)
+    for (auto &pl : activePlayers)
     {
         pl.bet(minimumBet);
     };
 
     // 3. dealer distributes cards and draws own cards
-    for (auto &pl : players)
+    for (auto &pl : activePlayers)
     {
         dealer.giveCard(deck, pl);
         dealer.giveCard(deck, pl);
@@ -30,7 +30,7 @@ void Match::playhand()
     dealer.draw(deck);
 
     // 4. player calls cards until limit or out
-    for (auto &pl : players)
+    for (auto &pl : activePlayers)
     {
         while (pl.checkScore() < 18)
             dealer.giveCard(deck, pl);
@@ -45,7 +45,7 @@ void Match::playhand()
     std::cout << dealer << std::endl;
 
     // 6. dealer wins and loses
-    for (auto &pl : players)
+    for (auto &pl : activePlayers)
     {
         if (dealer.checkScore() > 21 && pl.checkScore() <= 21)
             dealer.lose(pl);
@@ -56,7 +56,7 @@ void Match::playhand()
     };
 
     // 7. dealer collect cards and return own cards to the deck
-    for (auto &pl : players)
+    for (auto &pl : activePlayers)
     {
         dealer.collectCards(deck, pl);
     };
@@ -84,7 +84,7 @@ std::ostream &operator<<(std::ostream &os, Match &rhs)
        << "Hands Played: " << rhs.handCounter << "/" << rhs.maximumHands << '\n'
        << "Active players: "
        << "Placeholder"
-       << "/" << rhs.players.size() << '\n'
+       << "/" << rhs.totalPlayers << '\n'
        << std::endl;
     return os;
 };

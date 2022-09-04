@@ -15,7 +15,10 @@ class Match
 
 protected:
     Dealer dealer;
-    std::vector<RealPlayer> players;
+    int totalPlayers;
+    std::vector<RealPlayer> activePlayers;
+    std::vector<RealPlayer> inactivePlayers;
+    std::vector<RealPlayer> eliminatedPlayers;
     Deck deck;
     int handCounter;
     bool finished;
