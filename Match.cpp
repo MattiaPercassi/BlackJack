@@ -53,6 +53,7 @@ void Match::playhand()
             dealer.win(pl);
         else if (dealer.checkScore() >= pl.checkScore())
             dealer.win(pl);
+        else dealer.lose(pl);
     };
 
     // 7. dealer collect cards and return own cards to the deck
@@ -63,14 +64,37 @@ void Match::playhand()
     dealer.returnCards(deck);
     // TODO - implement code
     /*
-    9. eliminate players with too little balance
 
     10. check the maximum hands, if reached we terminate here --> OUTSIDE THIS FUNCTION
     11. check if all players are eliminated if so we terminate --> OUTSIDE THIS FUNCTION
     end. show results of the match
     */
+
     // 8. update the played hands counter
     ++handCounter;
+    // 9. eliminate players with too little balance
+    for (auto &pl : activePlayers)
+    {
+        if (pl.checkBalance() < minimumBet)
+        {
+            eliminatedPlayers.push_back(pl);
+        }
+    }
+    for (int i{static_cast<int>(activePlayers.size()) - 1}; i >= 0; i--)
+    {
+        if (activePlayers.at(i).checkBalance() < minimumBet)
+            activePlayers.erase(activePlayers.begin() + i);
+    };
+    // lambda expression caputures this as this match object to evaluate the minimum bet
+    // std::remove_if(activePlayers.begin(), activePlayers.end(), [this](RealPlayer &p)
+    //                { return p.checkBalance() < this->minimumBet; });
+
+    // 10. set all players not eliminated to activestatus for next hand
+    for (auto &pl : inactivePlayers)
+    {
+        activePlayers.push_back(pl);
+    }
+    inactivePlayers.clear();
 };
 
 bool Match::checkHandsPlayed()

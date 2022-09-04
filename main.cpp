@@ -31,7 +31,7 @@ int main()
 
     Deck deck{1};
 
-    Match match1{dealer, players, deck, 10, 100, 5};
+    Match match1{dealer, players, deck, 40, 100, 5};
 
     while (match1.checkHandsPlayed())
     {
