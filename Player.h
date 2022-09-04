@@ -16,12 +16,11 @@ protected:
     int winning;
     int losses;
     int handsPlayed;
-    bool eliminated;
     std::vector<Card> hand;
 
 public:
     // initialize all at 0
-    Player() : balance{0}, winning{0}, losses{0}, handsPlayed{0}, eliminated{false} {};
+    Player() : balance{0}, winning{0}, losses{0}, handsPlayed{0} {};
 
     // virtual destructor needed for syntax
     virtual ~Player(){};

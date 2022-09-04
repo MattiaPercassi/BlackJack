@@ -82,8 +82,8 @@ std::ostream &operator<<(std::ostream &os, Match &rhs)
 {
     os << "----- CURRENT GAME STATUS -----" << '\n'
        << "Hands Played: " << rhs.handCounter << "/" << rhs.maximumHands << '\n'
-       << "Active players: " << std::count_if(rhs.players.begin(), rhs.players.end(), [](RealPlayer &p)
-                                              { return !p.isEliminated(); })
+       << "Active players: "
+       << "Placeholder"
        << "/" << rhs.players.size() << '\n'
        << std::endl;
     return os;

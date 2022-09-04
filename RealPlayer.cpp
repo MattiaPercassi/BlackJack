@@ -10,8 +10,6 @@ void RealPlayer::setPlayer(std::string nm, int initialBalance)
 {
     name = nm;
     balance = initialBalance;
-    eliminated = false;
-    active = true;
 };
 void RealPlayer::win()
 {
@@ -38,16 +36,7 @@ void RealPlayer::bet(int b)
     {
         balance -= b;
         currentBet += b;
-        active = true;
     }
-    else
-    {
-        active = false;
-    };
-};
-bool RealPlayer::isActive()
-{
-    return active;
 };
 int RealPlayer::checkBalance()
 {
@@ -56,10 +45,6 @@ int RealPlayer::checkBalance()
 int RealPlayer::checkBet()
 {
     return currentBet;
-};
-bool RealPlayer::isEliminated()
-{
-    return eliminated;
 };
 void RealPlayer::resetBet()
 {
@@ -94,8 +79,6 @@ std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
        << std::setw(20) << "Current balance: " << std::left << rhs.balance << '\n'
        << std::setw(20) << "Current bet: " << std::left << rhs.currentBet << '\n'
        << std::setw(20) << "Hands played: " << std::left << rhs.handsPlayed << '\n'
-       << std::setw(20) << "Eliminated: " << std::left << rhs.eliminated << '\n'
-       << std::setw(20) << "Active: " << std::left << rhs.active << std::endl;
-    os << "-------------------\n";
+       << "-------------------" << std::endl;
     return os;
 };
