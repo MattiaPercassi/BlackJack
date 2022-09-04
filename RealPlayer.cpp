@@ -13,12 +13,16 @@ void RealPlayer::setPlayer(std::string nm, int initialBalance)
 };
 void RealPlayer::win()
 {
+    std::cout << "-------------------\n"
+              << name << " wins " << currentBet << "!\n-------------------" << std::endl;
     winning += currentBet;
     balance += currentBet * 2;
     resetBet();
 };
 void RealPlayer::lose()
 {
+    std::cout << "-------------------\n"
+              << name << " loses " << currentBet << "\n-------------------" << std::endl;
     losses += currentBet;
     resetBet();
 };

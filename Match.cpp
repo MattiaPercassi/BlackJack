@@ -53,7 +53,8 @@ void Match::playhand()
             dealer.win(pl);
         else if (dealer.checkScore() >= pl.checkScore())
             dealer.win(pl);
-        else dealer.lose(pl);
+        else
+            dealer.lose(pl);
     };
 
     // 7. dealer collect cards and return own cards to the deck
@@ -107,7 +108,7 @@ std::ostream &operator<<(std::ostream &os, Match &rhs)
     os << "----- CURRENT GAME STATUS -----" << '\n'
        << "Hands Played: " << rhs.handCounter << "/" << rhs.maximumHands << '\n'
        << "Active players: "
-       << "Placeholder"
+       << rhs.activePlayers.size()
        << "/" << rhs.totalPlayers << '\n'
        << std::endl;
     return os;

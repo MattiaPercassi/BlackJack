@@ -44,7 +44,8 @@ void Dealer::updateHandCounter()
 std::ostream &operator<<(std::ostream &os, Dealer &rhs)
 {
     os << std::boolalpha;
-    os << "-------------------\n" << rhs.name << '\n'
+    os << "-------------------\n"
+       << rhs.name << '\n'
        << std::setw(20) << std::left << "Winning: " << rhs.winning << '\n'
        << std::setw(20) << std::left << "Losses: " << rhs.losses << '\n'
        << std::setw(20) << std::left << "Current hand: ";
@@ -57,7 +58,8 @@ std::ostream &operator<<(std::ostream &os, Dealer &rhs)
             os << card;
         };
     }
-    os << "\n-------------------\n";
+    os << '\n'
+       << std::setw(20) << "Hand value: " << std::left << rhs.checkScore() << "\n-------------------\n";
     os << std::endl;
     return os;
 };
