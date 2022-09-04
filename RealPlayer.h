@@ -23,7 +23,7 @@ public:
     void lose();
     virtual void draw(Deck &);
     virtual void updateHandCounter();
-    void bet(int);
+    bool bet(int);
     int checkBalance();
     int checkBet();
     void resetBet();
