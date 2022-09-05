@@ -65,12 +65,15 @@ void Match::playhand()
     };
     dealer.draw(deck);
     dealer.draw(deck);
-
+    std::cout << dealer << std::endl;
     // 4. player calls cards until limit or out
     for (auto &pl : activePlayers)
     {
         bool flag{false};
-        do
+        if (pl.checkScore() == 21)
+            flag = true;
+
+        while (!flag)
         {
             pl.showHand();
             std::cout << "Do you call a card? [y/n] ";
@@ -87,7 +90,7 @@ void Match::playhand()
             else
                 std::cout << input << " is invalid input, retry.";
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        } while (!flag);
+        };
         std::cout << pl << std::endl;
     };
 
