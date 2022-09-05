@@ -83,3 +83,13 @@ std::ostream &operator<<(std::ostream &os, RealPlayer &rhs)
        << "-------------------" << std::endl;
     return os;
 };
+
+void RealPlayer::showHand()
+{
+    std::cout << name << '\n';
+    for (auto &c : hand)
+    {
+        std::cout << c;
+    }
+    std::cout << std::endl;
+};

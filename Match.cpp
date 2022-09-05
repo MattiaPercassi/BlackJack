@@ -8,6 +8,8 @@
 #include "RealPlayer.h"
 #include "Match.h"
 #include <sstream>
+#include <limits>
+#include <ios>
 
 Match::Match(Dealer d, std::vector<RealPlayer> p, Deck de, int minbet, int maxbet, int maxhands) : dealer{d}, totalPlayers{static_cast<int>(p.size())}, activePlayers{p}, inactivePlayers{}, eliminatedPlayers{}, deck{de}, handCounter{0}, finished{false}, minimumBet{minbet}, maximumBet{maxbet}, maximumHands{maxhands} {};
 void Match::playhand()
@@ -67,13 +69,30 @@ void Match::playhand()
     // 4. player calls cards until limit or out
     for (auto &pl : activePlayers)
     {
-        while (pl.checkScore() < 18)
-            dealer.giveCard(deck, pl);
+        bool flag{false};
+        do
+        {
+            pl.showHand();
+            std::cout << "Do you call a card? [y/n] ";
+            std::string input;
+            std::cin >> input;
+            if (input == "y")
+            {
+                dealer.giveCard(deck, pl);
+                if (pl.checkScore() >= 21)
+                    flag = true;
+            }
+            else if (input == "n")
+                flag = true;
+            else
+                std::cout << input << " is invalid input, retry.";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } while (!flag);
         std::cout << pl << std::endl;
     };
 
     // 5. dealer draws cards until limit or out
-    while (dealer.checkScore() < 18)
+    while (dealer.checkScore() < 17)
     {
         dealer.draw(deck);
     };

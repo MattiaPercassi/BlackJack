@@ -28,6 +28,7 @@ public:
     int checkBet();
     void resetBet();
     std::vector<Card> returnCards();
+    void showHand();
 };
 
 #endif
