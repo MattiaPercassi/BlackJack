@@ -108,6 +108,10 @@ void Match::playhand()
 
     // 8. update the played hands counter
     ++handCounter;
+    for (auto &pl : activePlayers)
+    {
+        pl.updateHandCounter();
+    };
 
     // 10. eliminate players with too little balance
     for (auto &pl : activePlayers)
