@@ -30,6 +30,7 @@ public:
     Match(Dealer, std::vector<RealPlayer>, Deck, int, int, int);
     void playhand();
     bool checkHandsPlayed();
+    bool areActivePlayers();
     // void save(); //commented for now
 };
 

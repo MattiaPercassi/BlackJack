@@ -7,6 +7,7 @@
 #include "Deck.h"
 #include "RealPlayer.h"
 #include "Match.h"
+#include <sstream>
 
 Match::Match(Dealer d, std::vector<RealPlayer> p, Deck de, int minbet, int maxbet, int maxhands) : dealer{d}, totalPlayers{static_cast<int>(p.size())}, activePlayers{p}, inactivePlayers{}, eliminatedPlayers{}, deck{de}, handCounter{0}, finished{false}, minimumBet{minbet}, maximumBet{maxbet}, maximumHands{maxhands} {};
 void Match::playhand()
@@ -17,7 +18,41 @@ void Match::playhand()
     // 2. players bet
     for (auto &pl : activePlayers)
     {
-        pl.bet(minimumBet);
+        std::cout << pl << '\n';
+        bool flag{false};
+        int bet{0};
+        do
+        {
+            std::cout << "Minimum bet: " << minimumBet << '\n'
+                      << "How much do you bet: ";
+
+            std::string input;
+            std::cin >> input;
+            std::stringstream ss{input};
+            if (ss >> bet)
+            {
+                if (bet == 0 || (bet >= minimumBet && bet <= pl.checkBalance()))
+                    flag = true;
+                else if (bet < minimumBet)
+                    std::cout << bet << " is below minimum bet, retry." << std::endl;
+                else
+                    std::cout << bet << " is above your current balance, retry" << std::endl;
+            }
+            else
+                std::cout << input << " is an invalid bet, retry." << std::endl;
+        } while (!flag);
+        if (bet > 0)
+            pl.bet(bet);
+        else
+        {
+            std::cout << "You pass this hand." << std::endl;
+            inactivePlayers.push_back(pl);
+        }
+    };
+    for (int i{static_cast<int>(activePlayers.size()) - 1}; i >= 0; i--)
+    {
+        if (activePlayers.at(i).checkBet() == 0)
+            activePlayers.erase(activePlayers.begin() + i);
     };
 
     // 3. dealer distributes cards and draws own cards
@@ -73,7 +108,8 @@ void Match::playhand()
 
     // 8. update the played hands counter
     ++handCounter;
-    // 9. eliminate players with too little balance
+
+    // 10. eliminate players with too little balance
     for (auto &pl : activePlayers)
     {
         if (pl.checkBalance() < minimumBet)
@@ -101,6 +137,11 @@ void Match::playhand()
 bool Match::checkHandsPlayed()
 {
     return handCounter < maximumHands;
+};
+
+bool Match::areActivePlayers()
+{
+    return activePlayers.size() > 0;
 };
 
 std::ostream &operator<<(std::ostream &os, Match &rhs)

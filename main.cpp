@@ -33,7 +33,7 @@ int main()
 
     Match match1{dealer, players, deck, 40, 100, 5};
 
-    while (match1.checkHandsPlayed())
+    while (match1.checkHandsPlayed() && match1.areActivePlayers())
     {
         std::cout << match1;
         match1.playhand();
