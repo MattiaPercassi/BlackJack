@@ -11,9 +11,8 @@ int Player::checkScore()
 {
     int tempScore{0};
     // No Ace score, sum all cards without Aces (lambda function dependent on the value assigned to ace)
-    // TODO - checkValue should return the value between 1 and 10, for the actual card symbol we need an extra member to be shown
     int acesCount = std::count_if(hand.begin(), hand.end(), [](Card &c)
-                               { return (c.checkValue() == 1); });
+                                  { return (c.checkValue() == 1); });
     for (auto &card : hand)
     {
         if (card.checkValue() != 1)
@@ -26,9 +25,9 @@ int Player::checkScore()
     if (tempScore + acesCount >= 21)
         return tempScore + acesCount;
     // if instead we do not reach 21 we have to check what happens when we consider aces as 11 and not 1 --> we start from the highest score so we will return only if we get below 21, if not after the for loop we will return the score calculated with minimum aceCount
-    int score{tempScore};
     for (int i{acesCount}; i >= 1; --i)
     {
+        int score{tempScore};
         score += i * 11 + acesCount - i;
         // since we start from the highest score, if this is less or equal to 21 wit is final
         if (score <= 21)

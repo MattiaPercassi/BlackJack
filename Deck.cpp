@@ -36,9 +36,9 @@ Card Deck::draw()
 
 void Deck::shuffle()
 {
-    std::random_device rd;
-    std::mt19937 g(rd()); // seed for random shuffle method
-    std::shuffle(cards.begin(), cards.end(), g);
+    auto rd = std::random_device{};
+    auto rng = std::default_random_engine{rd()};
+    std::shuffle(cards.begin(), cards.end(), rng);
     return;
 };
 
