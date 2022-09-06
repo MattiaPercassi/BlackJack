@@ -15,6 +15,10 @@ void Dealer::win(RealPlayer &player)
     winning += player.checkBet();
     player.lose();
 };
+void Dealer::even(RealPlayer &player)
+{
+    player.even();
+};
 void Dealer::lose(RealPlayer &player)
 {
     losses += player.checkBet();

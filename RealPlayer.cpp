@@ -19,6 +19,14 @@ void RealPlayer::win()
     balance += currentBet * 2;
     resetBet();
 };
+void RealPlayer::even()
+{
+    std::cout << "-------------------\n"
+              << name << " is even with the dealer.\n-------------------"
+              << std::endl;
+    balance += currentBet;
+    resetBet();
+};
 void RealPlayer::lose()
 {
     std::cout << "-------------------\n"

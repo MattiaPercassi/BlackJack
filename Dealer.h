@@ -18,6 +18,7 @@ public:
     void setPlayer(std::string, int);
     void shuffle(Deck &);
     void win(RealPlayer &);
+    void even(RealPlayer &);
     void lose(RealPlayer &);
     void draw(Deck &);
     void giveCard(Deck &, RealPlayer &);

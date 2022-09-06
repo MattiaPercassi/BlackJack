@@ -21,6 +21,7 @@ public:
     virtual void setPlayer(std::string, int);
     void win();
     void lose();
+    void even();
     virtual void draw(Deck &);
     virtual void updateHandCounter();
     void bet(int);

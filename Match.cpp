@@ -111,7 +111,18 @@ void Match::playhand()
             dealer.lose(pl);
         else if (pl.checkScore() > 21)
             dealer.win(pl);
-        else if (dealer.checkScore() >= pl.checkScore())
+        else if (dealer.checkScore() == pl.checkScore())
+        {
+            if (dealer.countCards() == pl.countCards())
+            {
+                dealer.even(pl);
+            }
+            else
+            {
+                dealer.countCards() < pl.countCards() ? dealer.win(pl) : dealer.lose(pl);
+            };
+        }
+        else if (dealer.checkScore() > pl.checkScore())
             dealer.win(pl);
         else
             dealer.lose(pl);
