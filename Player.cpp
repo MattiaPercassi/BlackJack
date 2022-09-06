@@ -36,3 +36,7 @@ int Player::checkScore()
     // in case no combination was reached that could generate a score <=21
     return tempScore + acesCount;
 };
+int Player::countCards()
+{
+    return static_cast<int>(hand.size());
+};

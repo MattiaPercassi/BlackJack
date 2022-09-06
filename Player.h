@@ -32,6 +32,7 @@ public:
     virtual void updateHandCounter() = 0;
     // Check score will be implemented in the Player class as it is same among all players
     int checkScore();
+    int countCards();
 };
 
 #endif
