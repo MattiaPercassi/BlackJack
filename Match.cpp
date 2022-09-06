@@ -69,28 +69,31 @@ void Match::playhand()
     // 4. player calls cards until limit or out
     for (auto &pl : activePlayers)
     {
-        bool flag{false};
-        if (pl.checkScore() == 21)
-            flag = true;
-
-        while (!flag)
+        if (dealer.checkScore() != 21)
         {
-            pl.showHand();
-            std::cout << "Do you call a card? [y/n] ";
-            std::string input;
-            std::cin >> input;
-            if (input == "y")
-            {
-                dealer.giveCard(deck, pl);
-                if (pl.checkScore() >= 21)
-                    flag = true;
-            }
-            else if (input == "n")
+            bool flag{false};
+            if (pl.checkScore() == 21)
                 flag = true;
-            else
-                std::cout << input << " is invalid input, retry.";
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        };
+
+            while (!flag)
+            {
+                pl.showHand();
+                std::cout << "Do you call a card? [y/n] ";
+                std::string input;
+                std::cin >> input;
+                if (input == "y")
+                {
+                    dealer.giveCard(deck, pl);
+                    if (pl.checkScore() >= 21)
+                        flag = true;
+                }
+                else if (input == "n")
+                    flag = true;
+                else
+                    std::cout << input << " is invalid input, retry.";
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            };
+        }
         std::cout << pl << std::endl;
     };
 
