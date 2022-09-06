@@ -6,9 +6,16 @@
 #include "Deck.h"
 #include "RealPlayer.h"
 #include "Match.h"
+#include <random>
+#include <ctime>
+
+// static data member must be declared outside the class of belonging (Deck) and need to be present in one single source file in the scope of their belonging (i.e. global scope). Here members are also initialized outside the class and within the class they are just declared.
+// it is preferred to seed the pseudo random generator with the c-style time(nullptr) from <ctime> as the stl random_device CAN produce always the same seed depending on machine implementation, as it was in this case, this solution provides random suffles every time
+std::mt19937 Deck::rng{static_cast<unsigned int>(time(nullptr))};
 
 int main()
 {
+
     Dealer dealer;
     dealer.setPlayer("Dealer", 0);
 
