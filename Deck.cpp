@@ -37,8 +37,8 @@ Card Deck::draw()
 void Deck::shuffle()
 {
     // auto rng = std::default_random_engine{};
-    auto rd = std::random_device{};
-    auto rng = std::mt19937{rd()};
+    std::random_device rd;
+    std::mt19937 rng(rd());
     std::shuffle(cards.begin(), cards.end(), rng);
     return;
 };
