@@ -71,26 +71,48 @@ void Match::playhand()
     {
         if (dealer.checkScore() != 21)
         {
+            pl.showHand();
+            if (pl.checkBalance() >= pl.checkBet())
+            {
+                bool flag{false};
+                while (!flag)
+                {
+                    std::cout << "Do you double your bet? [y/n] ";
+                    std::string input;
+                    std::cin >> input;
+                    if (input == "y")
+                    {
+                        pl.bet(pl.checkBet());
+                        flag = true;
+                        std::cout << "You doubled your bet up to: " << pl.checkBet() << std::endl;
+                    }
+                    else if (input == "n")
+                        flag = true;
+                    else
+                        std::cout << input << " is not a valid input, retry." << std::endl;
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+            };
             bool flag{false};
             if (pl.checkScore() == 21)
                 flag = true;
 
             while (!flag)
             {
-                pl.showHand();
                 std::cout << "Do you call a card? [y/n] ";
                 std::string input;
                 std::cin >> input;
                 if (input == "y")
                 {
                     dealer.giveCard(deck, pl);
+                    pl.showHand();
                     if (pl.checkScore() >= 21)
                         flag = true;
                 }
                 else if (input == "n")
                     flag = true;
                 else
-                    std::cout << input << " is invalid input, retry.";
+                    std::cout << input << " is invalid input, retry." << std::endl;
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             };
         }
