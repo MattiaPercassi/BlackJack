@@ -8,6 +8,8 @@
 #include "Match.h"
 #include <random>
 #include <ctime>
+#include <limits>
+#include <sstream>
 
 // static data member must be declared outside the class of belonging (Deck) and need to be present in one single source file in the scope of their belonging (i.e. global scope). Here members are also initialized outside the class and within the class they are just declared.
 // it is preferred to seed the pseudo random generator with the c-style time(nullptr) from <ctime> as the stl random_device CAN produce always the same seed depending on machine implementation, as it was in this case, this solution provides random suffles every time
@@ -19,22 +21,38 @@ int main()
     Dealer dealer;
     dealer.setPlayer("Dealer", 0);
 
-    RealPlayer player1;
-    RealPlayer player2;
-    RealPlayer player3;
-    RealPlayer player4;
-    RealPlayer player5;
-    player1.setPlayer("Mattia", 100);
-    player2.setPlayer("Carlo", 100);
-    player3.setPlayer("Matteo", 100);
-    player4.setPlayer("Lucia", 100);
-    player5.setPlayer("Giorgio", 100);
+    std::cout << "\nWelcome to the BlackJack game\n\nHow many players are there? ";
+    bool flag{false};
+    int playerNumber{0};
+    while (!flag)
+    {
+        std::string input;
+        std::cin >> input;
+        std::stringstream ss{input};
+        if (ss >> playerNumber && playerNumber!=0)
+        {
+            std::cout << "\n"
+                      << playerNumber << " players" << std::endl;
+            flag = true;
+        }
+        else
+        {
+            std::cout << input << " is not a valid input, retry\nHow many players? ";
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    };
     std::vector<RealPlayer> players;
-    players.push_back(player1);
-    players.push_back(player2);
-    players.push_back(player3);
-    players.push_back(player4);
-    players.push_back(player5);
+    for (int i{0}; i < playerNumber; ++i)
+    {
+        RealPlayer pl;
+        std::cout << "What is the name of player " << i + 1 << "? ";
+        std::string input;
+        std::cin >> input;
+        pl.setPlayer(input, 100);
+        players.push_back(pl);
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << std::endl;
+    };
 
     Deck deck{1};
 
