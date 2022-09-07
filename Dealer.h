@@ -13,7 +13,7 @@ class Dealer : public Player
     friend std::ostream &operator<<(std::ostream &, Dealer &);
 
 public:
-    Dealer() : Player(){};
+    Dealer() : Player() {};
     virtual ~Dealer(){};
     void setPlayer(std::string, int);
     void shuffle(Deck &);

@@ -44,12 +44,10 @@ int main()
     std::vector<RealPlayer> players;
     for (int i{0}; i < playerNumber; ++i)
     {
-        RealPlayer pl;
         std::cout << "What is the name of player " << i + 1 << "? ";
         std::string input;
         std::cin >> input;
-        pl.setPlayer(input, 100);
-        players.push_back(pl);
+        players.emplace_back(input, 100);
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << std::endl;
     };

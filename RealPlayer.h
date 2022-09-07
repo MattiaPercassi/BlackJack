@@ -16,6 +16,7 @@ protected:
 
 public:
     RealPlayer() : Player(), currentBet{} {};
+    RealPlayer(std::string, int);
     virtual ~RealPlayer(){};
 
     virtual void setPlayer(std::string, int);

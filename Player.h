@@ -20,7 +20,8 @@ protected:
 
 public:
     // initialize all at 0
-    Player() : balance{0}, winning{0}, losses{0}, handsPlayed{0} {};
+    Player(std::string, int);
+    Player() : Player("", 0){};
 
     // virtual destructor needed for syntax
     virtual ~Player(){};

@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <numeric>
 
+Player::Player(std::string nm, int bl) : name{nm}, balance{bl}, winning{0}, losses{0}, handsPlayed{0} {};
+
 int Player::checkScore()
 {
     int tempScore{0};

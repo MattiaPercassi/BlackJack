@@ -6,6 +6,8 @@
 #include <iomanip>
 #include <vector>
 
+RealPlayer::RealPlayer(std::string nm, int bl) : Player(nm, bl), currentBet{0} {};
+
 void RealPlayer::setPlayer(std::string nm, int initialBalance)
 {
     name = nm;
