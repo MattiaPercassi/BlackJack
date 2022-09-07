@@ -15,7 +15,7 @@ Deck::Deck(int deckNum) : cards{}
         {
             for (size_t j{0}; j < ranks.size(); ++j)
             {
-                cards.push_back(Card(values.at(j), ranks.at(j), su));
+                cards.emplace_back(values.at(j), ranks.at(j), su);
             }
         }
     }
